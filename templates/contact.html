@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Contact - Anwar{% endblock %}
+{% block content %}
+<div class="cinematic-chapter" style="padding-top: 140px; min-height: 80vh;">
+    <div class="chapter-content-wrapper" style="max-width: 800px;">
+        <div class="contact-form-glass">
+            <div class="cinematic-badge">
+                <span class="cinematic-badge-dot"></span>
+                <span>Direct Inquiries</span>
+            </div>
+            <h1 class="cinematic-title" style="font-size: 2.8rem;">Contact <span>me</span></h1>
+            <p class="cinematic-subtitle">
+                Send a dispatch directly to my inbox. I respond promptly to collaboration inquiries.
+            </p>
+
+            <!-- Preserved Form with Same Field Names and Action -->
+            <form method="POST" action="{{ url_for('contact') }}">
+                <div class="form-group-cinematic">
+                    <label class="form-label-cinematic" for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-input-cinematic" placeholder="Your name" required>
+                </div>
+                <div class="form-group-cinematic">
+                    <label class="form-label-cinematic" for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-input-cinematic" placeholder="Your email address" required>
+                </div>
+                <div class="form-group-cinematic">
+                    <label class="form-label-cinematic" for="message">Message:</label>
+                    <textarea id="message" name="message" class="form-input-cinematic" rows="4" placeholder="Your message here..." required></textarea>
+                </div>
+                <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <button type="submit" class="btn-cinematic-primary">
+                        <span>Send Message</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <a href="{{ url_for('home') }}#contact" class="btn-cinematic-secondary">
+                        <i class="fa-solid fa-paw"></i>
+                        <span>Explore Cat Sanctuary</span>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

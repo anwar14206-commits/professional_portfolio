@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Skills - Anwar{% endblock %}
+{% block content %}
+<div class="cinematic-chapter" style="padding-top: 140px; min-height: 80vh;">
+    <div class="chapter-content-wrapper" style="max-width: 900px;">
+        <div class="about-card">
+            <div class="cinematic-badge">
+                <span class="cinematic-badge-dot"></span>
+                <span>Technical Skills</span>
+            </div>
+            <h1 class="cinematic-title" style="font-size: 3rem;">My <span>Skills</span></h1>
+            
+            <p class="cinematic-subtitle">
+                Core technologies and engineering proficiencies.
+            </p>
+
+            <!-- Preserved Skills -->
+            <div class="skills-container" style="margin-bottom: 35px;">
+                {% for skill in skills %}
+                <div class="skill-cinematic-card">
+                    <div class="skill-card-top">
+                        <div class="skill-name-wrap">
+                            <div class="skill-icon-bubble">
+                                <i class="{{ skill.icon or 'fa-solid fa-code' }}"></i>
+                            </div>
+                            <div>
+                                <h4 class="skill-title">{{ skill.name }}</h4>
+                                <span class="skill-category-tag">{{ skill.category }}</span>
+                            </div>
+                        </div>
+                        <span class="skill-percentage-num">{{ skill.proficiency }}%</span>
+                    </div>
+                    <div class="skill-meter-bar">
+                        <div class="skill-meter-fill" style="width: {{ skill.proficiency }}%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="{{ url_for('home') }}#skills" class="btn-cinematic-primary">
+                    <i class="fa-solid fa-paw"></i>
+                    <span>Experience Full Cat Journey</span>
+                </a>
+                <a href="{{ url_for('projects') }}" class="btn-cinematic-secondary">
+                    <span>Explore Projects</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

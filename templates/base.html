@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Anwar - Python Full Stack Developer | Cinematic Portfolio{% endblock %}</title>
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Existing CSS and Cinematic Design System -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cinematic.css') }}">
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="{% block body_class %}cinematic-experience-body{% endblock %}">
+    <!-- Atmospheric Ambient Mist Canvas -->
+    <canvas id="ambient-canvas"></canvas>
+    <div class="volumetric-vignette"></div>
+    <div class="cinematic-glow-orb orb-1"></div>
+    <div class="cinematic-glow-orb orb-2"></div>
+
+    <!-- Floating Cinematic Navigation -->
+    <nav class="cinematic-nav">
+        <a href="{{ url_for('home') }}" class="nav-brand">
+            <span class="cat-glyph"><i class="fa-solid fa-cat"></i></span>
+            <span>ANWAR</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}#home" class="nav-link active">Home</a></li>
+            <li><a href="{{ url_for('home') }}#about" class="nav-link">About</a></li>
+            <li><a href="{{ url_for('home') }}#skills" class="nav-link">Skills</a></li>
+            <li><a href="{{ url_for('home') }}#projects" class="nav-link">Projects</a></li>
+            <li><a href="{{ url_for('home') }}#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <div class="nav-utilities">
+            <button id="ambient-sound-toggle" class="util-btn" title="Toggle Atmospheric Ambience" aria-label="Toggle audio">
+                <i class="fa-solid fa-volume-xmark"></i>
+            </button>
+            <a href="{{ url_for('contact') }}" class="nav-action-btn">Hire me</a>
+        </div>
+    </nav>
+
+    <!-- Flashed Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flashed-messages-container" style="position: fixed; top: 90px; left: 50%; transform: translateX(-50%); z-index: 1000; width: 90%; max-width: 600px;">
+                {% for category, message in messages %}
+                    <div class="cinematic-toast show {{ category }}" style="position: relative; right: auto; bottom: auto; transform: none; opacity: 1; margin-bottom: 10px;">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>{{ message }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Cinematic Toast Popup -->
+    <div id="cinematic-toast" class="cinematic-toast">
+        <i class="fa-solid fa-sparkles"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <!-- Main Content Container -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Cinematic Footer Preserving Anwar's Credits -->
+    <footer class="cinematic-footer">
+        <div class="footer-anwar-sign">
+            <p>@ 2026 Anwar. built with Flask</p>
+        </div>
+        <div class="footer-links" style="display: flex; gap: 20px; align-items: center;">
+            <a href="{{ url_for('admin_dashboard') }}" style="color: var(--text-muted); font-size: 0.8rem; text-decoration: none;" title="Admin Content Management">
+                <i class="fa-solid fa-lock"></i> Admin CMS
+            </a>
+            <span style="color: var(--border-subtle);">|</span>
+            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-cyan);">
+                <i class="fa-solid fa-paw"></i> Guided by the Mysterious Black Cat
+            </span>
+        </div>
+    </footer>
+
+    <!-- GSAP & Core Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

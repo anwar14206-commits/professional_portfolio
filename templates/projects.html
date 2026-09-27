@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Projects - Anwar{% endblock %}
+{% block content %}
+<div class="cinematic-chapter" style="padding-top: 140px; min-height: 80vh;">
+    <div class="chapter-content-wrapper" style="max-width: 1000px;">
+        <div class="cinematic-badge">
+            <span class="cinematic-badge-dot"></span>
+            <span>Featured Work</span>
+        </div>
+        <h1 class="cinematic-title" style="font-size: 3rem;">My <span>Portfolio</span></h1>
+        
+        <p class="cinematic-subtitle">
+            Crafted with Python, Flask, and modern web architectures.
+        </p>
+
+        <!-- Preserved Project Cards -->
+        <div class="projects-grid" style="margin-bottom: 35px;">
+            {% for project in projects %}
+            <div class="cinematic-project-card">
+                <div>
+                    <div class="project-card-header">
+                        <span class="project-status-badge {% if 'progress' in project.status.lower() or 'soon' in project.title.lower() %}progress{% endif %}">
+                            {{ project.status or 'Completed' }}
+                        </span>
+                        <i class="fa-solid fa-code-branch" style="color: var(--accent-cyan);"></i>
+                    </div>
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                </div>
+                <div>
+                    <div class="project-tags">
+                        {% for tech in project.technologies.split(',') %}
+                        <span class="tech-pill">{{ tech.strip() }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="project-actions">
+                        {% if project.github_url and project.github_url != '#' %}
+                        <a href="{{ project.github_url }}" target="_blank" class="project-btn">
+                            <i class="fa-brands fa-github"></i> Code
+                        </a>
+                        {% endif %}
+                        {% if project.live_url and project.live_url != '#' %}
+                        <a href="{{ project.live_url }}" target="_blank" class="project-btn" style="background: var(--accent-cyan); color: #040810;">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                        </a>
+                        {% else %}
+                        <span class="project-btn" style="opacity: 0.6; cursor: default;">
+                            <i class="fa-solid fa-circle-dot"></i> In Development
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <a href="{{ url_for('home') }}#projects" class="btn-cinematic-primary">
+                <i class="fa-solid fa-paw"></i>
+                <span>Experience Full Cat Journey</span>
+            </a>
+            <a href="{{ url_for('contact') }}" class="btn-cinematic-secondary">
+                <span>Hire Me</span>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

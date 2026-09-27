@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}About - Anwar{% endblock %}
+{% block content %}
+<div class="cinematic-chapter" style="padding-top: 140px; min-height: 80vh;">
+    <div class="chapter-content-wrapper" style="max-width: 800px;">
+        <div class="about-card">
+            <div class="cinematic-badge">
+                <span class="cinematic-badge-dot"></span>
+                <span>Developer Profile</span>
+            </div>
+            <h1 class="cinematic-title" style="font-size: 3rem;">About <span>me</span></h1>
+            
+            <!-- Exact preserved text -->
+            <p class="about-text-lead">
+                {{ profile.bio or "I started learning Python to become a Full Stack Developer. I love building things that live on the internet." }}
+            </p>
+
+            <div class="about-features-grid" style="margin-bottom: 30px;">
+                <div class="feature-pill"><i class="fa-brands fa-python"></i><span>Python Full Stack</span></div>
+                <div class="feature-pill"><i class="fa-solid fa-server"></i><span>Flask Backend</span></div>
+                <div class="feature-pill"><i class="fa-solid fa-database"></i><span>Data Modeling</span></div>
+                <div class="feature-pill"><i class="fa-solid fa-cat"></i><span>Cinematic Experience</span></div>
+            </div>
+
+            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <a href="{{ url_for('home') }}#about" class="btn-cinematic-primary">
+                    <i class="fa-solid fa-paw"></i>
+                    <span>Experience Full Cat Journey</span>
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn-cinematic-secondary">
+                    <span>Contact Me</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

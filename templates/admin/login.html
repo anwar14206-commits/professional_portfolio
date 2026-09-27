@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Authentication | Anwar Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cinematic.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+</head>
+<body class="admin-body">
+    <div class="admin-login-wrapper">
+        <div class="admin-login-card">
+            <div class="admin-login-header">
+                <div class="cat-icon"><i class="fa-solid fa-cat"></i></div>
+                <h2>Sanctuary Admin</h2>
+                <p>Enter credentials to access content management</p>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #fca5a5; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 0.88rem; text-align: center;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('admin_login') }}">
+                <div class="form-group-cinematic">
+                    <label class="admin-label" for="username">Username</label>
+                    <input type="text" id="username" name="username" class="admin-input" placeholder="admin" required autofocus>
+                </div>
+
+                <div class="form-group-cinematic">
+                    <label class="admin-label" for="password">Password</label>
+                    <input type="password" id="password" name="password" class="admin-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn-cinematic-primary" style="width: 100%; justify-content: center; margin-top: 10px;">
+                    <i class="fa-solid fa-lock-open"></i>
+                    <span>Authenticate</span>
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 24px;">
+                <a href="{{ url_for('home') }}" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: none;">
+                    <i class="fa-solid fa-arrow-left"></i> Return to Public Portfolio
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

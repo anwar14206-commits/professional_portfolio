@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+
+{% block title %}Anwar Hussain | Python Full Stack Developer - Cinematic Journey{% endblock %}
+
+{% block content %}
+<div class="cinematic-scroll-experience">
+
+    <!-- FIXED CINEMATIC CAT STAGE (Controlled via Scroll) -->
+    <div class="cinematic-stage-container" id="cinematic-stage">
+        <div class="cat-stage-rig" id="cat-stage-rig">
+            <!-- Ground Pedestal Shadow -->
+            <div class="cat-ground-shadow"></div>
+
+            <!-- Frame 1: 0% Standing Looking Forward -->
+            <img src="{{ url_for('static', filename='images/cat/cat_standing.jpg') }}" 
+                 id="cat-frame-1" 
+                 class="cat-frame active" 
+                 alt="Mysterious Black Cat Standing" 
+                 loading="eager">
+
+            <!-- Frame 2: 20% Turning Head -->
+            <img src="{{ url_for('static', filename='images/cat/cat_turn.jpg') }}" 
+                 id="cat-frame-2" 
+                 class="cat-frame" 
+                 alt="Mysterious Black Cat Turning Head" 
+                 loading="eager">
+
+            <!-- Frame 3: 40% Walking Mid-Stride -->
+            <img src="{{ url_for('static', filename='images/cat/cat_walking.jpg') }}" 
+                 id="cat-frame-3" 
+                 class="cat-frame" 
+                 alt="Mysterious Black Cat Walking" 
+                 loading="eager">
+
+            <!-- Frame 4: 60-80% Prowling Forward -->
+            <img src="{{ url_for('static', filename='images/cat/cat_prowl.jpg') }}" 
+                 id="cat-frame-4" 
+                 class="cat-frame" 
+                 alt="Mysterious Black Cat Approaching" 
+                 loading="eager">
+
+            <!-- Frame 5: 100% Sitting Calmly at Destination -->
+            <img src="{{ url_for('static', filename='images/cat/cat_resting.jpg') }}" 
+                 id="cat-frame-5" 
+                 class="cat-frame" 
+                 alt="Mysterious Black Cat Resting on Stone Dais" 
+                 loading="eager">
+
+            <!-- Dynamic Electric-Blue Eye Luminescence Speculars -->
+            <div class="cat-eyes-luminescence">
+                <div class="eye-glow-spot eye-left" style="top: 27%; left: 45%; width: 14px; height: 14px;"></div>
+                <div class="eye-glow-spot eye-right" style="top: 27%; left: 55%; width: 14px; height: 14px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CINEMATIC TIMELINE HUD (Scroll Navigation) -->
+    <div class="cinematic-hud">
+        <div class="hud-track">
+            <div class="hud-progress-bar" id="hud-progress-bar"></div>
+        </div>
+        <div class="hud-step-dots">
+            <div class="hud-dot active" data-target="home" data-label="00 // ARRIVAL"></div>
+            <div class="hud-dot" data-target="about" data-label="01 // IDENTITY"></div>
+            <div class="hud-dot" data-target="skills" data-label="02 // MASTERY"></div>
+            <div class="hud-dot" data-target="projects" data-label="03 // CREATIONS"></div>
+            <div class="hud-dot" data-target="experience" data-label="04 // PATH"></div>
+            <div class="hud-dot" data-target="contact" data-label="05 // SANCTUARY"></div>
+        </div>
+    </div>
+
+    <!-- CHAPTER 00: HOME / HERO (0% SCROLL) -->
+    <section class="cinematic-chapter hero-chapter" id="home">
+        <div class="chapter-content-wrapper">
+            <div class="hero-layout">
+                <div class="hero-narrative">
+                    <!-- Profile Card Badge -->
+                    <div class="hero-meta-card">
+                        <img src="{{ profile.photo_url or url_for('static', filename='images/anwar.jpeg') }}" 
+                             alt="Anwar Hussain" 
+                             class="hero-profile-avatar">
+                        <div class="hero-meta-info">
+                            <h4>{{ profile.full_name or "Anwar Hussain" }}</h4>
+                            <p><i class="fa-solid fa-code"></i> Python Developer</p>
+                        </div>
+                    </div>
+
+                    <div class="cinematic-badge">
+                        <span class="cinematic-badge-dot"></span>
+                        <span>Interactive Cinematic Portfolio</span>
+                    </div>
+
+                    <!-- Preserved Existing Title & Content -->
+                    <h1 class="cinematic-title">
+                        Hello, I'm <br><span>{{ profile.name or "Anwar" }}</span>
+                    </h1>
+
+                    <p class="cinematic-subtitle">
+                        {{ profile.title or "Python Full Stack Developer in training" }}
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn-cinematic-primary">
+                            <span>{{ profile.hero_cta or "Hire me" }}</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#projects" class="btn-cinematic-secondary">
+                            <i class="fa-solid fa-folder-open"></i>
+                            <span>View Projects</span>
+                        </a>
+                    </div>
+
+                    <div class="scroll-indicator-wrap">
+                        <div class="mouse-scroll-icon">
+                            <div class="mouse-wheel"></div>
+                        </div>
+                        <span>Scroll to control the cinematic timeline</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 01: ABOUT ME (20% SCROLL) -->
+    <section class="cinematic-chapter" id="about">
+        <div class="chapter-content-wrapper">
+            <div class="about-grid">
+                <div></div> <!-- Spacer for Left-gliding Cat -->
+                <div class="about-card">
+                    <div class="cinematic-badge">
+                        <span class="cinematic-badge-dot"></span>
+                        <span>01 // Developer Chronicle</span>
+                    </div>
+                    <h2 class="cinematic-title" style="font-size: 2.8rem;">
+                        About <span>me</span>
+                    </h2>
+                    
+                    <!-- Preserved Existing About Content -->
+                    <p class="about-text-lead">
+                        {{ profile.bio or "I started learning Python to become a Full Stack Developer. I love building things that live on the internet." }}
+                    </p>
+
+                    <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.98rem; line-height: 1.7;">
+                        Dedicated to creating clean backend architectures, resilient APIs, and immersive web experiences. Guided by relentless curiosity and modern software engineering principles.
+                    </p>
+
+                    <div class="about-features-grid">
+                        <div class="feature-pill">
+                            <i class="fa-brands fa-python"></i>
+                            <span>Python Ecosystem</span>
+                        </div>
+                        <div class="feature-pill">
+                            <i class="fa-solid fa-server"></i>
+                            <span>Flask Backend</span>
+                        </div>
+                        <div class="feature-pill">
+                            <i class="fa-solid fa-database"></i>
+                            <span>Database Design</span>
+                        </div>
+                        <div class="feature-pill">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Interactive UI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 02: SKILLS (40% SCROLL) -->
+    <section class="cinematic-chapter" id="skills">
+        <div class="chapter-content-wrapper">
+            <div class="cinematic-badge">
+                <span class="cinematic-badge-dot"></span>
+                <span>02 // Technical Arsenal</span>
+            </div>
+            <h2 class="cinematic-title" style="font-size: 2.8rem;">
+                My <span>Skills</span>
+            </h2>
+            <p class="cinematic-subtitle">
+                Core technologies and frameworks powering my applications and full stack solutions.
+            </p>
+
+            <div class="skills-container">
+                <!-- Preserved Skills list (Python, Flask, HTML & CSS, Javascript, SQL) -->
+                {% for skill in skills %}
+                <div class="skill-cinematic-card">
+                    <div class="skill-card-top">
+                        <div class="skill-name-wrap">
+                            <div class="skill-icon-bubble">
+                                <i class="{{ skill.icon or 'fa-solid fa-code' }}"></i>
+                            </div>
+                            <div>
+                                <h4 class="skill-title">{{ skill.name }}</h4>
+                                <span class="skill-category-tag">{{ skill.category }}</span>
+                            </div>
+                        </div>
+                        <span class="skill-percentage-num">{{ skill.proficiency }}%</span>
+                    </div>
+                    <div class="skill-meter-bar">
+                        <div class="skill-meter-fill" style="width: {{ skill.proficiency }}%;"></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 03: PROJECTS (60% - 80% SCROLL) -->
+    <section class="cinematic-chapter" id="projects">
+        <div class="chapter-content-wrapper">
+            <div class="cinematic-badge">
+                <span class="cinematic-badge-dot"></span>
+                <span>03 // The Forge</span>
+            </div>
+            <h2 class="cinematic-title" style="font-size: 2.8rem;">
+                My <span>Portfolio</span>
+            </h2>
+            <p class="cinematic-subtitle">
+                Real-world projects demonstrating architectural design, full stack development, and responsive interfaces.
+            </p>
+
+            <div class="projects-grid">
+                <!-- Preserved Projects (Portfolio Website, Task manager) + Dynamic DB items -->
+                {% for project in projects %}
+                <div class="cinematic-project-card">
+                    <div>
+                        <div class="project-card-header">
+                            <span class="project-status-badge {% if 'progress' in project.status.lower() or 'soon' in project.title.lower() %}progress{% endif %}">
+                                {{ project.status or 'Completed' }}
+                            </span>
+                            <i class="fa-solid fa-laptop-code" style="color: var(--accent-cyan); font-size: 1.2rem;"></i>
+                        </div>
+                        <h3 class="project-title">{{ project.title }}</h3>
+                        <p class="project-description">{{ project.description }}</p>
+                    </div>
+
+                    <div>
+                        <div class="project-tags">
+                            {% for tech in project.technologies.split(',') %}
+                            <span class="tech-pill">{{ tech.strip() }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="project-actions">
+                            {% if project.github_url and project.github_url != '#' %}
+                            <a href="{{ project.github_url }}" target="_blank" class="project-btn">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            {% endif %}
+                            {% if project.live_url and project.live_url != '#' %}
+                            <a href="{{ project.live_url }}" target="_blank" class="project-btn" style="background: var(--accent-cyan); color: #040810;">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
+                            </a>
+                            {% else %}
+                            <span class="project-btn" style="opacity: 0.6; cursor: default;">
+                                <i class="fa-solid fa-circle-dot"></i> In Active Dev
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 04: EXPERIENCE & EDUCATION (85% SCROLL) -->
+    <section class="cinematic-chapter" id="experience">
+        <div class="chapter-content-wrapper">
+            <div class="cinematic-badge">
+                <span class="cinematic-badge-dot"></span>
+                <span>04 // Trajectory</span>
+            </div>
+            <h2 class="cinematic-title" style="font-size: 2.8rem;">
+                Experience & <span>Education</span>
+            </h2>
+
+            <div class="timeline-grid">
+                <!-- Experience Column -->
+                <div class="timeline-column">
+                    <h3><i class="fa-solid fa-briefcase"></i> Experience</h3>
+                    {% for exp in experience %}
+                    <div class="timeline-card">
+                        <div class="timeline-year">{{ exp.start_date }} — {{ exp.end_date }}</div>
+                        <div class="timeline-role">{{ exp.role }}</div>
+                        <div class="timeline-company">{{ exp.company }}</div>
+                        <p class="timeline-desc">{{ exp.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Education Column -->
+                <div class="timeline-column">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                    {% for edu in education %}
+                    <div class="timeline-card">
+                        <div class="timeline-year">{{ edu.start_date }} — {{ edu.end_date }}</div>
+                        <div class="timeline-role">{{ edu.degree }}</div>
+                        <div class="timeline-company">{{ edu.institution }}</div>
+                        <p class="timeline-desc">{{ edu.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHAPTER 05: CONTACT SANCTUARY (100% SCROLL) -->
+    <section class="cinematic-chapter" id="contact">
+        <div class="chapter-content-wrapper">
+            <div class="contact-layout">
+                <!-- Left Details Info -->
+                <div class="contact-info-card">
+                    <div class="cinematic-badge">
+                        <span class="cinematic-badge-dot"></span>
+                        <span>05 // Destination</span>
+                    </div>
+                    <h2 class="cinematic-title" style="font-size: 2.8rem;">
+                        Contact <span>me</span>
+                    </h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1rem; line-height: 1.7;">
+                        Have a project, opportunity, or idea? Reach out directly. The sanctuary is always listening.
+                    </p>
+
+                    <div class="contact-meta-item">
+                        <div class="contact-icon-box">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="contact-meta-text">
+                            <h5>Direct Dispatch</h5>
+                            <p>{{ profile.email or "anwar.hussain@example.com" }}</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-meta-item">
+                        <div class="contact-icon-box">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div class="contact-meta-text">
+                            <h5>Location</h5>
+                            <p>{{ profile.location or "Global / Remote" }}</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-meta-item">
+                        <div class="contact-icon-box">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="contact-meta-text">
+                            <h5>Status</h5>
+                            <p style="color: var(--accent-cyan);">Available for hire & collaboration</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Preserved Contact Form -->
+                <div class="contact-form-glass">
+                    <form id="cinematic-contact-form" method="POST" action="{{ url_for('contact') }}">
+                        <div class="form-group-cinematic">
+                            <label class="form-label-cinematic" for="name">Name:</label>
+                            <input type="text" id="name" name="name" class="form-input-cinematic" placeholder="Your name or company" required>
+                        </div>
+
+                        <div class="form-group-cinematic">
+                            <label class="form-label-cinematic" for="email">Email:</label>
+                            <input type="email" id="email" name="email" class="form-input-cinematic" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="form-group-cinematic">
+                            <label class="form-label-cinematic" for="message">Message:</label>
+                            <textarea id="message" name="message" class="form-input-cinematic" rows="4" placeholder="Tell me about your project or inquiry..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-cinematic-primary" style="width: 100%; justify-content: center;">
+                            <span>Send Message</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/cinematic-cat.js') }}"></script>
+{% endblock %}
